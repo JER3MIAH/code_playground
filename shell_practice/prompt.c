@@ -17,5 +17,7 @@ char *prompt(void)
 
 	getline(&buff, &n, stdin);
 
-	return (buff);
+	free(buff);
+
+	return (0);
 }
