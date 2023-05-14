@@ -9,8 +9,8 @@
 char *prompt(void)
 {
 	size_t n = 0;
-
 	char *buff = NULL;
+
 	char *pr = ("($) ");
 
 	printf("%s", pr);
@@ -19,5 +19,5 @@ char *prompt(void)
 
 	free(buff);
 
-	return (0);
+	return buff;
 }

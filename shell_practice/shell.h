@@ -9,5 +9,6 @@
 char *prompt(void);
 
 /*constants*/
+#define prompt main
 
 #endif
