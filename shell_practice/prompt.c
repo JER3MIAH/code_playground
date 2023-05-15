@@ -1,23 +1,21 @@
 #include "shell.h"
 
 /**
- * prompt - prints a prompt that collects input
+ * prompt - a function that prompts the user 
  *
- * Return: 0 on success
+ * Return: returns back our command 
  */
 
 char *prompt(void)
 {
-	size_t n = 0;
-	char *buff = NULL;
+	char *cmd = NULL;
+	size_t size = 0;
+	/*Getline automativally allocates sufficient memory for the above*/
 
-	char *pr = ("($) ");
-
-	printf("%s", pr);
-
-	getline(&buff, &n, stdin);
-
-	free(buff);
-
-	return buff;
+	char *p = "($) ";
+	
+	/*Display prompt*/
+	printf("%s", p);
+	getline(&cmd, &size, stdin);
+	return (cmd);
 }

@@ -1,15 +1,17 @@
 #include "shell.h"
 
 /**
- * main - msin functions
+ * main - Entry point of the program
  *
- * Return: 0 on success
+ * Return: Always 0
  */
 
 int main(void)
 {
-	char *sh = prompt();
-	printf("%s", sh);
+	char *cmd = prompt();
+	exec(cmd);
 
-	return(EXIT_SUCCESS);
+	printf("%s", cmd);
+	free(cmd);
+	return (0);
 }
