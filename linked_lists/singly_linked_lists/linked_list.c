@@ -11,11 +11,18 @@ struct node
 int main()
 {
 	struct node *head = NULL;  /*pointer to struct node(can access data and link)*/
+    struct node *current = NULL;
+
 	head = malloc(sizeof(struct node));  /*allocate memory for the node*/
 
 	head->data = 45;  /*accessing data with the arrow(->)*/
 	head->link = NULL;  /*accessing link*/
 
-	printf("%d", head->data);
+    /*to create a second node...*/
+    current = malloc(sizeof(struct node)); /*allocate memory for the node*/
+    current->data = 45;
+	current->link = NULL;
+    head->link = current; /*first node is now connected to second node*/
+
 	return (0);
 }
