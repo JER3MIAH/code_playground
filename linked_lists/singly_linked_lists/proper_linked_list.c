@@ -25,8 +25,8 @@ int main(void)
 
     /*to create a third node...*/
     current = malloc(sizeof(struct node))
-    current2->data = 3;
-	current2->link = NULL;
+    current->data = 3;
+	current->link = NULL;
 
     head->link->link = current;  /*better way to get to the third node*/
 
