@@ -53,11 +53,12 @@ export class UsersService {
     email: string;
     role: 'INTERN' | 'ENGINEER' | 'ADMIN';
   }) {
-    const usersByHighestId = [...this.users].sort((a, b) => (b.id = a.id));
+    const usersByHighestId = [...this.users].sort((a, b) => b.id - a.id);
     const newUser = {
       id: usersByHighestId[0].id + 1,
       ...user,
     };
+    this.users.push(newUser);
     return newUser;
   }
 
@@ -70,7 +71,7 @@ export class UsersService {
     },
   ) {
     this.users = this.users.map((user) => {
-      if (user.id !== id) {
+      if (user.id === id) {
         return { ...user, ...updatedUser };
       }
       return user;
