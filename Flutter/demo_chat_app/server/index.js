@@ -1,9 +1,17 @@
-const ws = require('ws')
-const server = new ws.Server({ port: '3000' })
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-server.on('connection', socket => {
-    socket.on('message', message => {
-        console.log(message)
-        socket.send(`${message}`)
-    })
-})
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('chat_message', (msg) => {
+        console.log('message: ' + msg);
+        io.emit('chat_message', msg);
+    });
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
+});
+http.listen(3000, () => {
+    console.log('listening on *:3000');
+});
