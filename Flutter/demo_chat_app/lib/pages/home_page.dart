@@ -15,6 +15,21 @@ class _HomePageState extends State<HomePage> {
   late IO.Socket socket;
 
   final List<String> _messages = [];
+  String _typingText = '';
+  bool _isTyping = false;
+
+  void _setTyping() {
+    setState(() {
+      _isTyping = true;
+    });
+
+    Future.delayed(
+      const Duration(seconds: 3),
+      () => setState(() {
+        _isTyping = false;
+      }),
+    );
+  }
 
   void _sendMessage(String message) {
     if (_controller.text.isNotEmpty) {
@@ -23,9 +38,19 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void _sendTyping() {
+    socket.emit('typing', '${socket.id!.substring(0, 5)} is typing...');
+  }
+
   void _handleMessage(dynamic message) {
     setState(() {
       _messages.add(message);
+    });
+  }
+
+  void _listenForTyping(dynamic message) {
+    setState(() {
+      _typingText = message;
     });
   }
 
@@ -38,6 +63,7 @@ class _HomePageState extends State<HomePage> {
     });
     socket.connect();
     socket.on('chat_message', _handleMessage);
+    socket.on('activity', _listenForTyping);
     super.initState();
   }
 
@@ -66,6 +92,10 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.w500,
                     ),
                     cursorColor: Colors.black,
+                    onChanged: (_) {
+                      _sendTyping();
+                      _setTyping();
+                    },
                     decoration: InputDecoration(
                       hintText: 'Your message',
                       hintStyle: TextStyle(
@@ -99,6 +129,16 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            const SizedBox(height: 10),
+            Text(
+              _isTyping ? _typingText : '',
+              style: TextStyle(
+                color: Colors.grey.shade500,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                fontStyle: FontStyle.italic,
+              ),
+            )
           ],
         ),
       ),
