@@ -1,17 +1,20 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+import { createServer } from "http"
+import { Server } from "socket.io"
+
+const httpServer = createServer();
+
+const io = new Server(httpServer, {});
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log(`User ${socket.id} connected`);
     socket.on('chat_message', (msg) => {
         console.log('message: ' + msg);
         io.emit('chat_message', msg);
     });
     socket.on('disconnect', () => {
-        console.log('user disconnected');
+        console.log(`User ${socket.id} disconnected`);
     });
 });
-http.listen(3000, () => {
+httpServer.listen(3000, () => {
     console.log('listening on *:3000');
 });

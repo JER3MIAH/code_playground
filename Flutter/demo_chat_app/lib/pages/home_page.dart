@@ -1,3 +1,4 @@
+import 'package:demo_chat_app/secrets.dart';
 import 'package:flutter/material.dart';
 // ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     _controller = TextEditingController();
-    socket = IO.io('http://localhost:3000', <String, dynamic>{
+    socket = IO.io('http://$ipAddress:3000', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
     });
@@ -59,10 +60,16 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: TextField(
                     controller: _controller,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                       hintText: 'Your message',
-                      hintStyle: const TextStyle(
-                        color: Colors.black,
+                      hintStyle: TextStyle(
+                        color: Colors.grey.shade600,
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
