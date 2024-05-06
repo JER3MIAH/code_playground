@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _sendTyping() {
-    socket.emit('typing', '${socket.id!.substring(0, 5)} is typing...');
+    socket.emit('typing', socket.id!.substring(0, 5));
   }
 
   void _handleMessage(dynamic message) {
