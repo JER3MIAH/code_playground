@@ -1,7 +1,8 @@
+import 'package:io_helper/io_helper.dart';
 import 'package:todo_app/services/task_service.dart' as todo_app;
-import 'package:todo_app/utils/utils.dart';
 
 void main(List<String> arguments) {
+  final ioHelper = IOHelper();
   final app = todo_app.TaskService();
 
   while (true) {
@@ -12,11 +13,11 @@ void main(List<String> arguments) {
     print("4. Remove Task");
     print("5. Exit");
 
-    String? choice = IOHelper.getInput('Enter your choice: ');
+    String? choice = ioHelper.getInput('Enter your choice: ');
 
     switch (choice) {
       case '1':
-        String title = IOHelper.getInput('Enter task title: ');
+        String title = ioHelper.getInput('Enter task title: ');
 
         if (title.isNotEmpty) {
           app.addTask(title);
@@ -26,14 +27,14 @@ void main(List<String> arguments) {
         app.getAllTasks();
         break;
       case '3':
-        String input = IOHelper.getInput('Enter task number to mark as done: ');
+        String input = ioHelper.getInput('Enter task number to mark as done: ');
         int? index = int.tryParse(input);
         if (index != null) {
           app.markTaskAsDone(index);
         }
         break;
       case '4':
-        String input = IOHelper.getInput('Enter task number to remove: ');
+        String input = ioHelper.getInput('Enter task number to remove: ');
         int? taskNumber = int.tryParse(input);
         if (taskNumber != null) {
           app.removeTask(taskNumber);
