@@ -42,7 +42,7 @@ class _RotatingBoxScreenState extends State<RotatingBoxScreen>
           mainAxisSize: .min,
           children: [
             AnimatedBuilder(
-              animation: _rotationAnimation,
+              animation: _controller,
               builder: (context, child) {
                 return Transform(
                   alignment: Alignment.center,
