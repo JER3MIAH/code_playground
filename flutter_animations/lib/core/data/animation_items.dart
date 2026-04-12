@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/features/animations/rotating_box_2_screen.dart';
 import 'package:flutter_animations/features/animations/rotating_box_screen.dart';
 
 import '../models/animation_item.dart';
@@ -21,13 +22,14 @@ final List<AnimationItem> animationItems = [
     builder: (_) => const RotatingBoxScreen(),
   ),
   AnimationItem(
-    id: 'slide',
-    title: 'Slide Transition',
-    subtitle: 'Slide a widget in from off-screen using SlideTransition.',
-    icon: Icons.swipe_right_alt_rounded,
-    color: const Color(0xFF5B4FCF),
-    tags: const ['Explicit', 'Tween'],
-    builder: (_) => const _PlaceholderScreen(title: 'Slide Transition'),
+    id: 'staggered_3d_box',
+    title: 'Staggered 3D Box',
+    subtitle:
+        'A complex sequence of X and Y rotations using Intervals and Matrix4.',
+    icon: Icons.view_in_ar_rounded,
+    color: const Color(0xFF673AB7),
+    tags: const ['Matrix4', 'Interval', 'Staggered'],
+    builder: (_) => const RotatingBox2Screen(),
   ),
   AnimationItem(
     id: 'hero',
