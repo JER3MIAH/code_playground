@@ -1,0 +1,62 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+class RotatingBoxScreen extends StatefulWidget {
+  const RotatingBoxScreen({super.key});
+
+  @override
+  State<RotatingBoxScreen> createState() => _RotatingBoxScreenState();
+}
+
+class _RotatingBoxScreenState extends State<RotatingBoxScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _rotationAnimation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat();
+    _rotationAnimation = Tween<double>(
+      begin: 0,
+      end: 2 * pi,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.linear));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Rotating Box')),
+      body: Center(
+        child: Column(
+          mainAxisSize: .min,
+          children: [
+            AnimatedBuilder(
+              animation: _rotationAnimation,
+              builder: (context, child) {
+                return Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.identity()
+                    ..rotateY(_rotationAnimation.value),
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Center(child: Text('Rotate me!')),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

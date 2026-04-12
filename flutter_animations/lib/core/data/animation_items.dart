@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/features/animations/rotating_box_screen.dart';
 
 import '../models/animation_item.dart';
 
@@ -10,13 +11,14 @@ import '../models/animation_item.dart';
 
 final List<AnimationItem> animationItems = [
   AnimationItem(
-    id: 'fade',
-    title: 'Fade Transition',
-    subtitle: 'Animate opacity from 0 → 1 with AnimatedOpacity.',
-    icon: Icons.blur_on_rounded,
-    color: const Color(0xFFE94560),
-    tags: const ['Implicit', 'Opacity'],
-    builder: (_) => const _PlaceholderScreen(title: 'Fade Transition'),
+    id: 'rotating_box',
+    title: 'Rotating Box',
+    subtitle:
+        'Spin a widget on the Y-axis using Matrix4 and AnimationController.',
+    icon: Icons.crop_square_rounded,
+    color: Colors.blue,
+    tags: const ['Explicit', 'Matrix4', 'Transform'],
+    builder: (_) => const RotatingBoxScreen(),
   ),
   AnimationItem(
     id: 'slide',
@@ -70,11 +72,21 @@ class _PlaceholderScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.construction_rounded, size: 64, color: Colors.grey),
+            const Icon(
+              Icons.construction_rounded,
+              size: 64,
+              color: Colors.grey,
+            ),
             const SizedBox(height: 16),
-            Text('Coming soon', style: Theme.of(context).textTheme.headlineMedium),
+            Text(
+              'Coming soon',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
             const SizedBox(height: 8),
-            Text('Replace this screen in animation_items.dart', style: Theme.of(context).textTheme.bodyMedium),
+            Text(
+              'Replace this screen in animation_items.dart',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ],
         ),
       ),
