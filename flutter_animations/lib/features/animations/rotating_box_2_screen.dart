@@ -58,7 +58,6 @@ class _RotatingBox2ScreenState extends State<RotatingBox2Screen>
               animation: _controller,
               builder: (context, child) {
                 return Transform(
-                  alignment: Alignment.center,
                   transform: Matrix4.identity()
                     ..rotateX(_topRotationAnimation.value)
                     ..rotateY(_rightRotationAnimation.value)
