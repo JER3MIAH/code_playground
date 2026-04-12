@@ -28,6 +28,12 @@ class _RotatingBoxScreenState extends State<RotatingBoxScreen>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Rotating Box')),
