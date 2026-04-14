@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/features/shared/widgets/widgets.dart';
 
 class RotatingBox2Screen extends StatefulWidget {
   const RotatingBox2Screen({super.key});
@@ -63,15 +64,7 @@ class _RotatingBox2ScreenState extends State<RotatingBox2Screen>
                     ..rotateY(_rightRotationAnimation.value)
                     ..rotateX(-_bottomRotationAnimation.value)
                     ..rotateY(-_leftRotationAnimation.value),
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Center(child: Text('Rotate me!')),
-                  ),
+                  child: BlueContainer(),
                 );
               },
             ),
