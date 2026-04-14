@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/features/animations/chained_circle_animation.dart';
 import 'package:flutter_animations/features/animations/rotating_box_2_screen.dart';
 import 'package:flutter_animations/features/animations/rotating_box_screen.dart';
 
@@ -32,13 +33,14 @@ final List<AnimationItem> animationItems = [
     builder: (_) => const RotatingBox2Screen(),
   ),
   AnimationItem(
-    id: 'hero',
-    title: 'Hero Animation',
-    subtitle: 'Shared element transitions between routes with Hero widget.',
-    icon: Icons.open_in_full_rounded,
-    color: const Color(0xFF0F9D58),
-    tags: const ['Hero', 'Route'],
-    builder: (_) => const _PlaceholderScreen(title: 'Hero Animation'),
+    id: 'chained_circle_flip',
+    title: 'Chained Circle Flip',
+    subtitle:
+        'Dynamic re-tweening on completion to create an infinite, evolving sequence.',
+    icon: Icons.published_with_changes_rounded,
+    color: Colors.pinkAccent,
+    tags: const ['StatusListener', 'Dynamic Tween', 'Matrix4'],
+    builder: (_) => const ChainedCircleAnimation(),
   ),
   AnimationItem(
     id: 'stagger',
