@@ -15,9 +15,7 @@ class _ThreeDBoxAnimationState extends State<ThreeDBoxAnimation>
   late AnimationController _yAxisController;
   late AnimationController _zAxisController;
 
-  late Animation<double> _xAxisAnimation;
-  late Animation<double> _yAxisAnimation;
-  late Animation<double> _zAxisAnimation;
+  late Tween<double> _animation;
 
   @override
   void initState() {
@@ -34,18 +32,7 @@ class _ThreeDBoxAnimationState extends State<ThreeDBoxAnimation>
           ..reset()
           ..repeat();
 
-    _xAxisAnimation = Tween<double>(
-      begin: 0.0,
-      end: pi * 2,
-    ).animate(_xAxisController);
-    _yAxisAnimation = Tween<double>(
-      begin: 0.0,
-      end: pi * 2,
-    ).animate(_yAxisController);
-    _zAxisAnimation = Tween<double>(
-      begin: 0.0,
-      end: pi * 2,
-    ).animate(_zAxisController);
+    _animation = Tween<double>(begin: 0.0, end: pi * 2);
     super.initState();
   }
 
@@ -63,32 +50,19 @@ class _ThreeDBoxAnimationState extends State<ThreeDBoxAnimation>
       appBar: AppBar(title: Text('3D Cube Assembly')),
       body: Center(
         child: AnimatedBuilder(
-          animation: _zAxisController,
+          animation: Listenable.merge([
+            _xAxisController,
+            _yAxisController,
+            _zAxisController,
+          ]),
           builder: (_, _) {
             return Transform(
               alignment: .center,
-              transform: Matrix4.identity()..rotateZ(_zAxisAnimation.value),
-              child: AnimatedBuilder(
-                animation: _yAxisController,
-                builder: (_, _) {
-                  return Transform(
-                    alignment: .center,
-                    transform: Matrix4.identity()
-                      ..rotateY(_yAxisAnimation.value),
-                    child: AnimatedBuilder(
-                      animation: _xAxisController,
-                      builder: (_, _) {
-                        return Transform(
-                          alignment: .center,
-                          transform: Matrix4.identity()
-                            ..rotateX(_xAxisAnimation.value),
-                          child: _ThreedBoxContainer(),
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
+              transform: Matrix4.identity()
+                ..rotateX(_animation.evaluate(_xAxisController))
+                ..rotateY(_animation.evaluate(_yAxisController))
+                ..rotateZ(_animation.evaluate(_zAxisController)),
+              child: _ThreedBoxContainer(),
             );
           },
         ),
