@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animations/features/animations/chained_circle_animation.dart';
 import 'package:flutter_animations/features/animations/rotating_box_2_screen.dart';
 import 'package:flutter_animations/features/animations/rotating_box_screen.dart';
+import 'package:flutter_animations/features/animations/three_d_box_animation.dart';
 
 import '../models/animation_item.dart';
 
@@ -43,13 +44,14 @@ final List<AnimationItem> animationItems = [
     builder: (_) => const ChainedCircleAnimation(),
   ),
   AnimationItem(
-    id: 'stagger',
-    title: 'Staggered List',
-    subtitle: 'Delay each item\'s entrance for a cascading reveal effect.',
-    icon: Icons.format_list_bulleted_rounded,
-    color: const Color(0xFFFF6B35),
-    tags: const ['Stagger', 'Interval'],
-    builder: (_) => const _PlaceholderScreen(title: 'Staggered List'),
+    id: '3d_cube_assembly',
+    title: '3D Cube Assembly',
+    subtitle:
+        'Constructing a 6-sided cube using Matrix4 folding and triple-axis de-synced rotation.',
+    icon: Icons.view_in_ar_sharp,
+    color: Colors.redAccent,
+    tags: const ['3D', 'Matrix4', 'Stack', 'Multi-Controller'],
+    builder: (_) => const ThreeDBoxAnimation(),
   ),
   AnimationItem(
     id: 'custom_paint',
