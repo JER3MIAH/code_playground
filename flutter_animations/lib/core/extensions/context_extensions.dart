@@ -60,21 +60,32 @@ extension MediaQueryX on BuildContext {
 extension SnackBarX on BuildContext {
   ScaffoldMessengerState get messenger => ScaffoldMessenger.of(this);
 
-  void showSnackBar(String message, {Duration duration = const Duration(seconds: 3), SnackBarAction? action, Color? backgroundColor}) {
+  void showSnackBar(
+    String message, {
+    Duration duration = const Duration(seconds: 3),
+    SnackBarAction? action,
+    Color? backgroundColor,
+  }) {
     messenger
       ..clearSnackBars()
-      ..showSnackBar(SnackBar(
-        content: Text(message),
-        duration: duration,
-        action: action,
-        backgroundColor: backgroundColor,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      ));
+      ..showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: duration,
+          action: action,
+          backgroundColor: backgroundColor,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
   }
 
-  void showErrorSnackBar(String message) => showSnackBar(message, backgroundColor: colorScheme.error);
-  void showSuccessSnackBar(String message) => showSnackBar(message, backgroundColor: Colors.green.shade700);
+  void showErrorSnackBar(String message) =>
+      showSnackBar(message, backgroundColor: colorScheme.error);
+  void showSuccessSnackBar(String message) =>
+      showSnackBar(message, backgroundColor: Colors.green.shade700);
 }
 
 extension FocusX on BuildContext {

@@ -7,15 +7,58 @@ abstract final class AppTheme {
   static const _surfaceDark = Color(0xFF16213E);
 
   static const _textThemeLight = TextTheme(
-    displayLarge: TextStyle(fontSize: 57, fontWeight: FontWeight.w800, letterSpacing: -2, color: _primary),
-    displayMedium: TextStyle(fontSize: 45, fontWeight: FontWeight.w700, letterSpacing: -1.5, color: _primary),
-    headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w700, letterSpacing: -1, color: _primary),
-    headlineMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.w600, letterSpacing: -0.5, color: _primary),
-    titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w600, letterSpacing: -0.3, color: _primary),
-    titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 0, color: _primary),
-    bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xFF444455)),
-    bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xFF666677)),
-    labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 0.5, color: _accent),
+    displayLarge: TextStyle(
+      fontSize: 57,
+      fontWeight: FontWeight.w800,
+      letterSpacing: -2,
+      color: _primary,
+    ),
+    displayMedium: TextStyle(
+      fontSize: 45,
+      fontWeight: FontWeight.w700,
+      letterSpacing: -1.5,
+      color: _primary,
+    ),
+    headlineLarge: TextStyle(
+      fontSize: 32,
+      fontWeight: FontWeight.w700,
+      letterSpacing: -1,
+      color: _primary,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.w600,
+      letterSpacing: -0.5,
+      color: _primary,
+    ),
+    titleLarge: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.w600,
+      letterSpacing: -0.3,
+      color: _primary,
+    ),
+    titleMedium: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0,
+      color: _primary,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: Color(0xFF444455),
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: Color(0xFF666677),
+    ),
+    labelLarge: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: _accent,
+    ),
   );
 
   static final light = ThemeData(
@@ -36,15 +79,25 @@ abstract final class AppTheme {
       elevation: 0,
       scrolledUnderElevation: 0,
       centerTitle: false,
-      titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: -1, color: _primary),
+      titleTextStyle: TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w800,
+        letterSpacing: -1,
+        color: _primary,
+      ),
       iconTheme: IconThemeData(color: _primary),
     ),
     cardTheme: CardThemeData(
       elevation: 0,
       color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
     ),
-    dividerTheme: const DividerThemeData(color: Color(0xFFE8E8EC), thickness: 1),
+    dividerTheme: const DividerThemeData(
+      color: Color(0xFFE8E8EC),
+      thickness: 1,
+    ),
     extensions: [AppColors.light],
   );
 
@@ -69,15 +122,25 @@ abstract final class AppTheme {
       elevation: 0,
       scrolledUnderElevation: 0,
       centerTitle: false,
-      titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: -1, color: Colors.white),
+      titleTextStyle: TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w800,
+        letterSpacing: -1,
+        color: Colors.white,
+      ),
       iconTheme: IconThemeData(color: Colors.white),
     ),
     cardTheme: CardThemeData(
       elevation: 0,
       color: _surfaceDark,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
     ),
-    dividerTheme: const DividerThemeData(color: Color(0xFF2A2A3E), thickness: 1),
+    dividerTheme: const DividerThemeData(
+      color: Color(0xFF2A2A3E),
+      thickness: 1,
+    ),
     extensions: [AppColors.dark],
   );
 }
@@ -119,7 +182,14 @@ class AppColors extends ThemeExtension<AppColors> {
   );
 
   @override
-  AppColors copyWith({Color? accent, Color? cardBackground, Color? tagBackground, Color? tagText, Color? shimmer, Color? divider}) {
+  AppColors copyWith({
+    Color? accent,
+    Color? cardBackground,
+    Color? tagBackground,
+    Color? tagText,
+    Color? shimmer,
+    Color? divider,
+  }) {
     return AppColors(
       accent: accent ?? this.accent,
       cardBackground: cardBackground ?? this.cardBackground,

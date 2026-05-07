@@ -3,6 +3,7 @@ import 'package:flutter_animations/features/animations/chained_circle_animation.
 import 'package:flutter_animations/features/animations/rotating_box_2_screen.dart';
 import 'package:flutter_animations/features/animations/rotating_box_screen.dart';
 import 'package:flutter_animations/features/animations/three_d_box_animation.dart';
+import 'package:flutter_animations/features/animations/staggered_entrance_screen.dart';
 
 import '../models/animation_item.dart';
 
@@ -54,48 +55,13 @@ final List<AnimationItem> animationItems = [
     builder: (_) => const ThreeDBoxAnimation(),
   ),
   AnimationItem(
-    id: 'custom_paint',
-    title: 'Custom Paint',
-    subtitle: 'Draw and animate shapes using CustomPainter.',
-    icon: Icons.draw_rounded,
-    color: const Color(0xFF00B4D8),
-    tags: const ['CustomPainter', 'Canvas'],
-    builder: (_) => const _PlaceholderScreen(title: 'Custom Paint'),
+    id: 'staggered_entrance',
+    title: 'Staggered Entrance',
+    subtitle:
+        'A synchronized orchestration of multiple elements using a single controller and overlapping Intervals.',
+    icon: Icons.sort_rounded,
+    color: const Color(0xFF7F77DD),
+    tags: const ['Staggered', 'Interval', 'Opacity', 'Scale', 'Slide'],
+    builder: (_) => const StaggeredEntranceScreen(),
   ),
 ];
-
-// ── Placeholder screen ────────────────────────────────────────────────────────
-// Delete this once you have replaced each item builder with a real screen.
-class _PlaceholderScreen extends StatelessWidget {
-  const _PlaceholderScreen({required this.title});
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(
-              Icons.construction_rounded,
-              size: 64,
-              color: Colors.grey,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Coming soon',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Replace this screen in animation_items.dart',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
