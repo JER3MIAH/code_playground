@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations/features/animations/chained_circle_animation.dart';
-import 'package:flutter_animations/features/animations/rotating_box_2_screen.dart';
-import 'package:flutter_animations/features/animations/rotating_box_screen.dart';
-import 'package:flutter_animations/features/animations/three_d_box_animation.dart';
-import 'package:flutter_animations/features/animations/staggered_entrance_screen.dart';
 
+import '../../features/animations/screens.dart';
 import '../models/animation_item.dart';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ADD YOUR ANIMATION DEMOS HERE
-// Each entry shows up as a card on the home screen.
-// The `builder` is called when the user taps the card.
-// ─────────────────────────────────────────────────────────────────────────────
-
+// Add new animation demos here.
+// Each entry appears as a card on the home screen.
 final List<AnimationItem> animationItems = [
   AnimationItem(
     id: 'rotating_box',
@@ -63,5 +55,20 @@ final List<AnimationItem> animationItems = [
     color: const Color(0xFF7F77DD),
     tags: const ['Staggered', 'Interval', 'Opacity', 'Scale', 'Slide'],
     builder: (_) => const StaggeredEntranceScreen(),
+  ),
+  AnimationItem(
+    id: 'animated_list',
+    title: 'Animated List',
+    subtitle:
+        'Add and remove items with slide, fade, and size-collapse transitions using the AnimatedList API.',
+    icon: Icons.format_list_bulleted_rounded,
+    color: const Color(0xFF26C6DA),
+    tags: const [
+      'AnimatedList',
+      'SizeTransition',
+      'SlideTransition',
+      'FadeTransition',
+    ],
+    builder: (_) => const AnimatedListScreen(),
   ),
 ];
